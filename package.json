@@ -1,0 +1,56 @@
+{
+  "name": "ChatWorld",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.64.2",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^1.10.3",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-screens": "^3.10.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-vector-icons": "^9.0.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "@testing-library/react-native": "^7.2.0",
+    "react-test-renderer": "17.0.2",
+    "detox": "^18.0.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+        "ios.simulator": {
+            "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ChatWorld.app",
+            "build": "xcodebuild -scheme ChatWorld -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+            "type": "ios.simulator",
+            "device": {
+                "type": "iPhone 12"
+            }
+        },
+        "android.emulator": {
+            "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+            "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=Debug && cd ..",
+            "type": "android.emulator",
+            "device": {
+                "avdName": "Pixel_3_API_30"
+            }
+        }
+    }
+}
